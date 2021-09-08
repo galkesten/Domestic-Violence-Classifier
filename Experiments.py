@@ -7,7 +7,7 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import metrics
 
-df = pd.read_csv("DomecticViolence.csv")
+df = pd.read_csv("db/DomecticViolence.csv")
 X = np.array((df['Post']))
 Y = np.array((df['Label']))
 
