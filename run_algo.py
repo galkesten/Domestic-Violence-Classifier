@@ -94,7 +94,6 @@ def naiv_bayse(x_train_new, Y, random_state_val):
     avg_acc = accuracy/5
     print(f"nb avg acurracy:{avg_acc} ")
     return avg_acc
-    # print(f"avg f1 score:{f/5} ")
 
 
 def get_accuracy(x_train, Y, title):
@@ -105,31 +104,9 @@ def get_accuracy(x_train, Y, title):
     MLP_acc = mlp(x_train, Y, i)
     SVM_acc = svm_func(x_train, Y, i)
     NB_acc = naiv_bayse(x_train, Y, i)
-    l = ['', RN_acc,MLP_acc, SVM_acc, NB_acc,]
+    l = ['', RN_acc,MLP_acc, SVM_acc, NB_acc]
     results.append(l)
 
-    with open('results_8_9_2.csv', 'w', newline='') as f:
+    with open('results.csv', 'w', newline='') as f:
         writer=csv.writer(f)
         writer.writerows(results)
-
-
-if __name__ == '__main__':
-    df = pd.read_csv("DomecticViolence.csv")
-    X = np.array((df['Post']))
-    Y = np.array((df['Label']))
-
-    # Tokenization of each document
-    tokenized_doc = []
-    for d in X:
-        tokenized_doc.append(word_tokenize(d.lower()))
-
-    # Convert tokenized document into gensim formated tagged data
-    tagged_data = [TaggedDocument(d, [i]) for i, d in enumerate(tokenized_doc)]
-    model= Doc2Vec.load("test_doc2vec.model")
-
-    x_train_new = []
-    for doc_id in range(len(tagged_data)):
-        inferred_vector = model.infer_vector(tagged_data[doc_id].words)
-        x_train_new.append(inferred_vector)
-
-    get_accuracy(x_train_new, Y, 'Title')
