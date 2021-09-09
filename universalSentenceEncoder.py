@@ -35,7 +35,7 @@ def createUSEVectors(removeStopWords, useLemmatization):
 #createUSEVectors(removeStopWords=True, useLemmatization=False)
 
 #To create USE vectores after using Lemmaization - remove the next comment
-#createUSEVectors(removeStopWords=False, useLemmatization=True)
+createUSEVectors(removeStopWords=False, useLemmatization=True)
 
 #To create USE vectores after using Lemmaization and removing stop words - remove the next comment
 #createUSEVectors(removeStopWords=True, useLemmatization=True)

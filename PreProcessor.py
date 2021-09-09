@@ -37,6 +37,7 @@ class PreProcessor:
             tokenized_posts.append(cleaned_post)
             #print( cleaned_post)
         self.X = tokenized_posts
+
     def cleanPosts(self):
         stop_words = set(stopwords.words('english'))
         wordnet_lemmatizer = WordNetLemmatizer()
@@ -63,13 +64,3 @@ class PreProcessor:
         df = pd.DataFrame(new_posts, index=ind)
         self.X = df[0]
 
-"""
-preProcessor = PreProcessor(True, True)
-preProcessor.splitDbToXandY()
-print(preProcessor.X)
-index = preProcessor.X.index
-print(index)
-#print(type(preProcessor.X[0]))
-preProcessor.cleanPosts()
-print(preProcessor.X)
-"""

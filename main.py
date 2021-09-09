@@ -6,7 +6,7 @@ from sklearn import metrics
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from PreProcessor import PreProcessor
 
-df = pd.read_csv('vectors/mpnet/mpnet.csv')
+df = pd.read_csv('vectors/USE/USE-try-Lemma.csv')
 Y = np.array(df['Label'])
 df = df.drop(columns=['Label'])
 X = df.to_numpy()

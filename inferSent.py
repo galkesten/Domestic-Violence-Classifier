@@ -40,12 +40,12 @@ def createInferSentVectors(removeStopWords, useLemmatization):
 #createInferSentVectors(removeStopWords=False, useLemmatization=False)
 
 #To create roberta vectores after removing stop words - remove the next comment
-#createInferSentVectors(removeStopWords=True, useLemmatization=False)
+createInferSentVectors(removeStopWords=True, useLemmatization=False)
 
 #To create roberta vectores after using Lemmaization - remove the next comment
-#createInferSentVectors(removeStopWords=False, useLemmatization=True)
+createInferSentVectors(removeStopWords=False, useLemmatization=True)
 
 #To create roberta vectores after using Lemmaization and removing stop words - remove the next comment
-#createInferSentVectors(removeStopWords=True, useLemmatization=True)
+createInferSentVectors(removeStopWords=True, useLemmatization=True)
 
 

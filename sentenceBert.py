@@ -4,10 +4,10 @@ import pandas as pd
 import numpy as np
 import os
 
-
 def createRobertaVectors(removeStopWords, useLemmatization):
     bert = SentenceTransformer('all-distilroberta-v1')
-
+    print("Max Sequence Length:", bert.max_seq_length)
+    bert.max_seq_length = 512
     preProcessor = PreProcessor(removeStopWords=removeStopWords, useLemmatization=useLemmatization)
     preProcessor.splitDbToXandY()
     preProcessor.cleanPosts()
@@ -28,7 +28,8 @@ def createRobertaVectors(removeStopWords, useLemmatization):
 
 def createMiniLMVectors(removeStopWords, useLemmatization):
     bert = SentenceTransformer('all-MiniLM-L6-v2')
-
+    print("Max Sequence Length:", bert.max_seq_length)
+    bert.max_seq_length = 512
     preProcessor = PreProcessor(removeStopWords=removeStopWords, useLemmatization=useLemmatization)
     preProcessor.splitDbToXandY()
     preProcessor.cleanPosts()
@@ -38,7 +39,7 @@ def createMiniLMVectors(removeStopWords, useLemmatization):
     df['Label'] = preProcessor.Y
     stop_words_header = "stopWords"
     lemma_header = "Lemma"
-    file_name = "miniLM"
+    file_name = "miniLM-punct"
     if removeStopWords:
         file_name += "-"+stop_words_header
     if useLemmatization:
@@ -48,7 +49,8 @@ def createMiniLMVectors(removeStopWords, useLemmatization):
 
 def createMpnetVectors(removeStopWords, useLemmatization):
     bert = SentenceTransformer('all-mpnet-base-v2')
-
+    print("Max Sequence Length:", bert.max_seq_length)
+    bert.max_seq_length = 512
     preProcessor = PreProcessor(removeStopWords=removeStopWords, useLemmatization=useLemmatization)
     preProcessor.splitDbToXandY()
     preProcessor.cleanPosts()
@@ -86,7 +88,7 @@ def createMpnetVectors(removeStopWords, useLemmatization):
 #createMiniLMVectors(removeStopWords=True, useLemmatization=False)
 
 #To create MiniLM vectores after using Lemmaization - remove the next comment
-#createMiniLMVectors(removeStopWords=False, useLemmatization=True)
+createMiniLMVectors(removeStopWords=False, useLemmatization=True)
 
 #To create MiniLM vectores after using Lemmaization and removing stop words - remove the next comment
 #createMiniLMVectors(removeStopWords=True, useLemmatization=True)
@@ -99,7 +101,8 @@ def createMpnetVectors(removeStopWords, useLemmatization):
 #createMpnetVectors(removeStopWords=True, useLemmatization=False)
 
 #To create mpnet vectores after using Lemmaization - remove the next comment
-createMpnetVectors(removeStopWords=False, useLemmatization=True)
+#createMpnetVectors(removeStopWords=False, useLemmatization=True)
 
 #To create mpnet vectores after using Lemmaization and removing stop words - remove the next comment
-createMpnetVectors(removeStopWords=True, useLemmatization=True)
+#createMpnetVectors(removeStopWords=True, useLemmatization=True)
+
