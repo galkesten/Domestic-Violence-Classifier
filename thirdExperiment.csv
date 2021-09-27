@@ -1,0 +1,93 @@
+Title,RN,MLP,SVM,NB
+bagOfPOS-no preprocess,0.61,0.5800000000000001,0.6225,-1
+bagOfPOS-stop words removal,0.5875,0.545,0.5825,-1
+bagOfPOS-punct removal,0.5775,0.575,0.5675,-1
+bagOfPOS-punct + stop words removal,0.6,0.5675,0.5275000000000001,-1
+POSWithTfIdf-no preprocess,0.575,0.605,0.6200000000000001,-1
+POSWithTfIdf-stop words removal,0.5725,0.515,0.5575,-1
+POSWithTfIdf-punct removal,0.525,0.5499999999999999,0.5599999999999999,-1
+POSWithTfIdf-punct + stop words removal,0.5075,0.5349999999999999,0.5225,-1
+bagOfWords-no preprocess,0.7525000000000001,0.8099999999999999,0.7274999999999999,-1
+bagOfWords-Lemmatization,0.7475,0.7899999999999999,0.7224999999999999,-1
+bagOfWords+bagOfPos-no preprocess,0.7224999999999999,0.8125,0.6575,-1
+bagOfWords+bagOfPos-Lemmatization,0.7575,0.8074999999999999,0.6625,-1
+bagOfWords+POSWithTfidf-no preprocess,0.7449999999999999,0.8225,0.7274999999999999,-1
+bagOfWords+POSWithTfidf-Lemmatization,0.7375,0.805,0.72,-1
+tfidf-no preprocess,0.7649999999999999,0.8,0.805,-1
+tfidf-Lemmatization,0.76,0.8024999999999999,0.8074999999999999,-1
+tfidf+bagOfPos-no preprocess,0.7625,0.8,0.61,-1
+tfidf+bagOfPos-Lemmatization,0.72,0.7875,0.61,-1
+tfidf+POSWithTfidf-no preprocess,0.74,0.8125,0.7999999999999999,-1
+tfidf+POSWithTfidf-Lemmatization,0.765,0.8025,0.8,-1
+doc2vec-no preprocess,0.7975,0.7949999999999999,0.8125,-1
+doc2vec-Lemmatization,0.7849999999999999,0.8099999999999999,0.82,-1
+doc2vec+bagOfPos-no preprocess,0.7949999999999999,0.7999999999999999,0.6475,-1
+doc2vec+bagOfPos-Lemmatization,0.8049999999999999,0.8100000000000002,0.6424999999999998,-1
+doc2vec+POSWithTfidf-no preprocess,0.77,0.8174999999999999,0.8099999999999999,-1
+doc2vec+POSWithTfidf-Lemmatization,0.7775000000000001,0.7999999999999999,0.82,-1
+doc2vec+tfidf-no preprocess,0.7949999999999999,0.825,0.8099999999999999,-1
+doc2vec+tfidf-Lemmatization,0.7924999999999999,0.8225,0.8174999999999999,-1
+doc2vec+tfidf+bagOfPos-no preprocess,0.7725000000000001,0.82,0.6449999999999999,-1
+doc2vec+tfidf+bagOfPos-Lemmatization,0.7899999999999999,0.8125,0.6424999999999998,-1
+doc2vec+tfidf+POSWithTfidf-no preprocess,0.7875,0.825,0.8099999999999999,-1
+doc2vec+tfidf+POSWithTfidf-Lemmatization,0.7949999999999999,0.8150000000000001,0.82,-1
+inferSent-no preprocess,0.7775,0.8300000000000001,0.82,-1
+inferSent-Lemmatization,0.795,0.8175000000000001,0.8175000000000001,-1
+inferSent+bagOfPos-no preprocess,0.77,0.7924999999999999,0.615,-1
+inferSent+bagOfPos-Lemmatization,0.7849999999999999,0.7950000000000002,0.615,-1
+inferSent+POSWithTfidf-no preprocess,0.77,0.825,0.825,-1
+inferSent+POSWithTfidf-Lemmatization,0.7849999999999999,0.8225,0.8150000000000001,-1
+inferSent+tfidf-no preprocess,0.7999999999999999,0.8324999999999999,0.8099999999999999,-1
+inferSent+tfidf-Lemmatization,0.7775,0.8275,0.8099999999999999,-1
+inferSent+tfidf+bagOfPos-no preprocess,0.785,0.8225,0.61,-1
+inferSent+tfidf+bagOfPos-Lemmatization,0.785,0.8200000000000001,0.61,-1
+inferSent+tfidf+POSWithTfidf-no preprocess,0.7675,0.8300000000000001,0.82,-1
+inferSent+tfidf+POSWithTfidf-Lemmatization,0.795,0.8275,0.825,-1
+miniLM-no preprocess,0.8025,0.86,0.8474999999999999,-1
+miniLM-Lemmatization,0.8049999999999999,0.85,0.8375,-1
+miniLM+bagOfPos-no preprocess,0.8,0.8399999999999999,0.6125,-1
+miniLM+bagOfPos-Lemmatization,0.8150000000000001,0.8325000000000001,0.6125,-1
+miniLM+POSWithTfidf-no preprocess,0.8149999999999998,0.8550000000000001,0.835,-1
+miniLM+POSWithTfidf-Lemmatization,0.8125,0.8400000000000001,0.8275,-1
+miniLM+tfidf-no preprocess,0.8150000000000001,0.8400000000000001,0.8425,-1
+miniLM+tfidf-Lemmatization,0.8225,0.8425,0.8375,-1
+miniLM+tfidf+bagOfPos-no preprocess,0.8149999999999998,0.85,0.61,-1
+miniLM+tfidf+bagOfPos-Lemmatization,0.8099999999999999,0.85,0.61,-1
+miniLM+tfidf+POSWithTfidf-no preprocess,0.8175000000000001,0.8574999999999999,0.8550000000000001,-1
+miniLM+tfidf+POSWithTfidf-Lemmatization,0.805,0.8625,0.845,-1
+mpnet-no preprocess,0.8699999999999999,0.86,0.8875,-1
+mpnet-Lemmatization,0.865,0.8675,0.885,-1
+mpnet+bagOfPos-no preprocess,0.8524999999999998,0.8675,0.61,-1
+mpnet+bagOfPos-Lemmatization,0.865,0.8625,0.61,-1
+mpnet+POSWithTfidf-no preprocess,0.8474999999999999,0.865,0.8775000000000001,-1
+mpnet+POSWithTfidf-Lemmatization,0.8625,0.875,0.8775000000000001,-1
+mpnet+tfidf-no preprocess,0.8525,0.89,0.8700000000000001,-1
+mpnet+tfidf-Lemmatization,0.8550000000000001,0.8800000000000001,0.885,-1
+mpnet+tfidf+bagOfPos-no preprocess,0.8450000000000001,0.8800000000000001,0.61,-1
+mpnet+tfidf+bagOfPos-Lemmatization,0.865,0.8699999999999999,0.61,-1
+mpnet+tfidf+POSWithTfidf-no preprocess,0.865,0.8800000000000001,0.8775000000000001,-1
+mpnet+tfidf+POSWithTfidf-Lemmatization,0.875,0.8925000000000001,0.8875,-1
+roberta-no preprocess,0.8724999999999999,0.85,0.89,-1
+roberta-Lemmatization,0.8525,0.8625,0.8875,-1
+roberta+bagOfPos-no preprocess,0.8699999999999999,0.8400000000000001,0.61,-1
+roberta+bagOfPos-Lemmatization,0.8625,0.8525,0.61,-1
+roberta+POSWithTfidf-no preprocess,0.875,0.8575000000000002,0.875,-1
+roberta+POSWithTfidf-Lemmatization,0.8550000000000001,0.8525,0.875,-1
+roberta+tfidf-no preprocess,0.8474999999999999,0.8649999999999999,0.8775000000000001,-1
+roberta+tfidf-Lemmatization,0.845,0.865,0.8775000000000001,-1
+roberta+tfidf+bagOfPos-no preprocess,0.8699999999999999,0.86,0.61,-1
+roberta+tfidf+bagOfPos-Lemmatization,0.8400000000000001,0.86,0.61,-1
+roberta+tfidf+POSWithTfidf-no preprocess,0.8775000000000001,0.8674999999999999,0.8775000000000001,-1
+roberta+tfidf+POSWithTfidf-Lemmatization,0.8474999999999999,0.865,0.8775000000000001,-1
+USE-no preprocess,0.8625,0.845,0.8850000000000001,-1
+USE-Lemmatization,0.8525,0.8275,0.8775000000000001,-1
+USE+bagOfPos-no preprocess,0.875,0.8375,0.61,-1
+USE+bagOfPos-Lemmatization,0.875,0.8200000000000001,0.61,-1
+USE+POSWithTfidf-no preprocess,0.875,0.8325000000000001,0.845,-1
+USE+POSWithTfidf-Lemmatization,0.8775000000000001,0.825,0.86,-1
+USE+tfidf-no preprocess,0.865,0.8625,0.8724999999999999,-1
+USE+tfidf-Lemmatization,0.8724999999999999,0.865,0.8975,-1
+USE+tfidf+bagOfPos-no preprocess,0.8699999999999999,0.8525,0.61,-1
+USE+tfidf+bagOfPos-Lemmatization,0.86,0.8425,0.61,-1
+USE+tfidf+POSWithTfidf-no preprocess,0.85,0.8724999999999999,0.875,-1
+USE+tfidf+POSWithTfidf-Lemmatization,0.8699999999999999,0.8675,0.8699999999999999,-1

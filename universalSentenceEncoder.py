@@ -5,10 +5,10 @@ import numpy as np
 
 
 
-def createUSEVectors(removeStopWords, useLemmatization):
+def createUSEVectors(removeStopWords, useLemmatization, removePunct=False):
     embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
 
-    preProcessor = PreProcessor(removeStopWords=removeStopWords, useLemmatization=useLemmatization)
+    preProcessor = PreProcessor(removeStopWords=removeStopWords, useLemmatization=useLemmatization, removePunct=removePunct)
     preProcessor.splitDbToXandY()
     preProcessor.cleanPosts()
 
@@ -19,11 +19,14 @@ def createUSEVectors(removeStopWords, useLemmatization):
     df['Label'] = preProcessor.Y
     stop_words_header = "stopWords"
     lemma_header = "Lemma"
+    punct_header = "punct"
     file_name = "USE"
     if removeStopWords:
         file_name += "-"+stop_words_header
     if useLemmatization:
         file_name+='-'+lemma_header
+    if removePunct:
+        file_name += '-' + punct_header
 
     df.to_csv(f'./vectors/USE/{file_name}.csv')
 

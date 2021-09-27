@@ -1,21 +1,13 @@
-import numpy as np
-import pandas as pd
-import csv
+
 from csv import DictWriter
-import nltk
-from sklearn.model_selection import GridSearchCV
-from sklearn.preprocessing import MinMaxScaler
-from gensim.models.doc2vec import Doc2Vec, TaggedDocument
-from nltk.tokenize import word_tokenize
+from datetime import date
 from sklearn.model_selection import StratifiedKFold
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
 from sklearn.neural_network import MLPClassifier
-from sklearn.metrics import classification_report, confusion_matrix
 from sklearn import svm
 from sklearn.naive_bayes import GaussianNB
-from sklearn.feature_extraction.text import CountVectorizer
 import os
 
 results = []
@@ -113,18 +105,33 @@ def LR(X, Y, random_state_val):
     return avg_acc
 
 
-def get_accuracy(X, Y, title):
-    field_names = ['Title', 'RN', 'MLP', 'SVM', 'NB']
+def get_accuracy(X, Y, title, useRN=True, useMLP=True, useSvm=True, useNb=True):
+    field_names = ['Title', 'RD', 'MLP', 'SVM', 'NB']
     random_state=42
-    RN_acc = randomforest(X, Y, random_state)
-    MLP_acc = mlp(X, Y, random_state)
-    SVM_acc = svm_func(X, Y, random_state)
-    NB_acc = naiv_bayse(X, Y, random_state)
-    dict = {'Title':title, 'RN': RN_acc, 'MLP': MLP_acc, 'SVM': SVM_acc, 'NB': NB_acc}
+    if useRN:
+        RD_acc = randomforest(X, Y, random_state)
+    else:
+        RD_acc = -1
+    if useMLP:
+        MLP_acc = mlp(X, Y, random_state)
+    else:
+        MLP_acc = -1
+    if useSvm:
+        SVM_acc = svm_func(X, Y, random_state)
+    else:
+        SVM_acc = -1
+    if useNb:
+        NB_acc = naiv_bayse(X, Y, random_state)
+    else:
+        NB_acc = -1
+    dict = {'Title':title, 'RD': RD_acc, 'MLP': MLP_acc, 'SVM': SVM_acc, 'NB': NB_acc}
     # Open your CSV file in append mode
     # Create a file object for this file
-    fileExist = os.path.isfile('./results.csv')
-    with open('results.csv', 'a') as f_object:
+    today = date.today()
+    dateStr = today.strftime("%b-%d-%Y")
+
+    fileExist = os.path.isfile(f'./results-{dateStr}.csv')
+    with open(f'./results-{dateStr}.csv', 'a') as f_object:
         # Pass the file object and a list
         # of column names to DictWriter()
         # You will get a object of DictWriter

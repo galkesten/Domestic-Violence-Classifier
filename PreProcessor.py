@@ -3,11 +3,13 @@ import numpy as np
 from nltk.tokenize import  word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import 	WordNetLemmatizer
+from nltk.tokenize import TweetTokenizer
 
 class PreProcessor:
-    def __init__(self, removeStopWords, useLemmatization):
+    def __init__(self, removeStopWords, useLemmatization, removePunct = False):
         self.removeStopWords = removeStopWords
         self.useLemmatization = useLemmatization
+        self.removePunct = removePunct
 
     def splitDbToXandY(self):
         df = pd.read_csv("db/DomecticViolence.csv")
@@ -25,7 +27,7 @@ class PreProcessor:
             for word in tokenized_post:
                 if self.removeStopWords and word in stop_words:
                     continue
-                if not word.isalnum():
+                if self.removePunct and  not word.isalnum():
                     continue
                 if self.useLemmatization:
                     lemma = wordnet_lemmatizer.lemmatize(word)
@@ -42,18 +44,18 @@ class PreProcessor:
         stop_words = set(stopwords.words('english'))
         wordnet_lemmatizer = WordNetLemmatizer()
         new_posts = []
+        #tokenizer = TweetTokenizer()
         for post in self.X:
             tokenized_post = word_tokenize(post.lower())
+            #tokenized_post = tokenizer.tokenize(post.lower())
             cleaned_post = []
             for word in tokenized_post:
                 if self.removeStopWords and word in stop_words:
                     continue
-                if not word.isalnum():
+                if self.removePunct and  not word.isalnum():
                     continue
                 if self.useLemmatization:
                     lemma = wordnet_lemmatizer.lemmatize(word)
-                    #if lemma != word:
-                     #   print("Lemma for {} is {}".format(word, lemma))
                     cleaned_post.append(lemma)
                 else:
                     cleaned_post.append(word)
@@ -64,3 +66,9 @@ class PreProcessor:
         df = pd.DataFrame(new_posts, index=ind)
         self.X = df[0]
 
+"""
+temp = PreProcessor(True, True)
+temp.splitDbToXandY()
+temp.cleanPosts()
+print(temp.X[161])
+"""

@@ -4,8 +4,8 @@ from gensim.models.fasttext import load_facebook_vectors, load_facebook_model
 import numpy as np
 import pandas as pd
 
-def createFastTextVectors(removeStopWords, useLemmatization):
-    preProcessor = PreProcessor(removeStopWords=removeStopWords, useLemmatization=useLemmatization)
+def createFastTextVectors(removeStopWords, useLemmatization, removePunct=False):
+    preProcessor = PreProcessor(removeStopWords=removeStopWords, useLemmatization=useLemmatization, removePunct=removePunct)
     preProcessor.splitDbToXandY()
     preProcessor.tokenizeWords()
     initialX = preProcessor.X
@@ -29,11 +29,14 @@ def createFastTextVectors(removeStopWords, useLemmatization):
     df['Label'] = preProcessor.Y
     stop_words_header = "stopWords"
     lemma_header = "Lemma"
+    punct_header = "punct"
     file_name = "fastText"
     if removeStopWords:
         file_name += "-" + stop_words_header
     if useLemmatization:
         file_name += '-' + lemma_header
+    if removePunct:
+        file_name += '-' + punct_header
     df.to_csv(f'./vectors/fastText/{file_name}.csv')
 
 
@@ -45,7 +48,12 @@ def createFastTextVectors(removeStopWords, useLemmatization):
 #createFastTextVectors(removeStopWords=True, useLemmatization=False)
 
 #To create fastText vectors after using Lemmaization - remove the next comment
-createFastTextVectors(removeStopWords=False, useLemmatization=True)
+#createFastTextVectors(removeStopWords=False, useLemmatization=True)
 
 #To create fastText vectors after using Lemmaization and removing stop words - remove the next comment
-createFastTextVectors(removeStopWords=True, useLemmatization=True)
+#createFastTextVectors(removeStopWords=True, useLemmatization=True)
+
+#To create vectors for punct experiment- remove the next comment
+createFastTextVectors(removeStopWords=False, useLemmatization=False, removePunct=True)
+createFastTextVectors(removeStopWords=True, useLemmatization=True, removePunct=True)
+createFastTextVectors(removeStopWords=True, useLemmatization=False, removePunct=True)

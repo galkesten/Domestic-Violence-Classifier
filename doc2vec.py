@@ -3,8 +3,8 @@ from PreProcessor import PreProcessor
 import pandas as pd
 
 
-def createDoc2vecVectors(removeStopWords, useLemmatization):
-    preProcessor = PreProcessor(removeStopWords=removeStopWords, useLemmatization=useLemmatization)
+def createDoc2vecVectors(removeStopWords, useLemmatization, removePunct=False):
+    preProcessor = PreProcessor(removeStopWords=removeStopWords, useLemmatization=useLemmatization, removePunct=removePunct)
     preProcessor.splitDbToXandY()
     preProcessor.tokenizeWords()
     initialX = preProcessor.X
@@ -24,25 +24,28 @@ def createDoc2vecVectors(removeStopWords, useLemmatization):
     df['Label'] = preProcessor.Y
     stop_words_header = "stopWords"
     lemma_header = "Lemma"
+    punct_header = "punct"
     file_name = "doc2Vec"
     if removeStopWords:
         file_name += "-" + stop_words_header
     if useLemmatization:
         file_name += '-' + lemma_header
+    if removePunct:
+        file_name += '-' + punct_header
 
     df.to_csv(f'./vectors/doc2vec/{file_name}.csv')
 
 
 # To create doc2vec vectors with no preprocess - remove the next comment
-#createDoc2vecVectors(removeStopWords=False, useLemmatization=False)
+createDoc2vecVectors(removeStopWords=False, useLemmatization=False)
 
 
 #To create doc2vec vectors after removing stop words - remove the next comment
-#createDoc2vecVectors(removeStopWords=True, useLemmatization=False)
+createDoc2vecVectors(removeStopWords=True, useLemmatization=False)
 
 #To create doc2vec vectors after using Lemmaization - remove the next comment
-#createDoc2vecVectors(removeStopWords=False, useLemmatization=True)
+createDoc2vecVectors(removeStopWords=False, useLemmatization=True)
 
 #To create doc2vec vectors after using Lemmaization and removing stop words - remove the next comment
-#createDoc2vecVectors(removeStopWords=True, useLemmatization=True)
+createDoc2vecVectors(removeStopWords=True, useLemmatization=True)
 

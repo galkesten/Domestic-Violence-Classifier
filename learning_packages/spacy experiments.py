@@ -1,6 +1,6 @@
 import spacy
 nlp = spacy.load('en_core_web_sm')
-doc = nlp("I don't like this Mr. Bin")
+doc = nlp("I'm don't  wanna was like this Mr. Bin")
 for token in doc:
     print(token.text, token.pos_, token.dep_, token.lemma_)
 print(len(doc))

@@ -5,7 +5,7 @@ import torch
 
 import nltk
 nltk.download('punkt')
-def createInferSentVectors(removeStopWords, useLemmatization):
+def createInferSentVectors(removeStopWords, useLemmatization, removePunct):
     V = 1
     MODEL_PATH = 'encoder/infersent%s.pkl' % V
     params_model = {'bsize': 64, 'word_emb_dim': 300, 'enc_lstm_dim': 2048,
@@ -16,7 +16,7 @@ def createInferSentVectors(removeStopWords, useLemmatization):
     W2V_PATH = 'GloVe/glove.840B.300d.txt'
     infersent.set_w2v_path(W2V_PATH)
 
-    preProcessor = PreProcessor(removeStopWords=removeStopWords, useLemmatization=useLemmatization)
+    preProcessor = PreProcessor(removeStopWords=removeStopWords, useLemmatization=useLemmatization, removePunct=removePunct)
     preProcessor.splitDbToXandY()
     preProcessor.cleanPosts()
 
@@ -27,17 +27,20 @@ def createInferSentVectors(removeStopWords, useLemmatization):
     df['Label'] = preProcessor.Y
     stop_words_header = "stopWords"
     lemma_header = "Lemma"
+    punct_header = "punct"
     file_name = "inferSent"
     if removeStopWords:
         file_name += "-"+stop_words_header
     if useLemmatization:
         file_name+='-'+lemma_header
+    if removePunct:
+        file_name += '-' + punct_header
 
     df.to_csv(f'./vectors/inferSent/{file_name}.csv')
 
 
 #To create inferSent vectores with no preprocess - remove the next comment
-#createInferSentVectors(removeStopWords=False, useLemmatization=False)
+createInferSentVectors(removeStopWords=False, useLemmatization=False)
 
 #To create roberta vectores after removing stop words - remove the next comment
 createInferSentVectors(removeStopWords=True, useLemmatization=False)
