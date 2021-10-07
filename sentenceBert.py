@@ -115,6 +115,3 @@ def createMpnetVectors(removeStopWords, useLemmatization, removePunct):
 #createMpnetVectors(removeStopWords=True, useLemmatization=True)
 
 
-#To create vectors for punct experiment- remove the next comment
-createRobertaVectors(removeStopWords=False, useLemmatization=False, removePunct=True)
-createMpnetVectors(removeStopWords=False, useLemmatization=True, removePunct=True)
