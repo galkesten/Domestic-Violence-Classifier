@@ -1,18 +1,23 @@
 import numpy as np
 import pandas as pd
-from sklearn.utils import shuffle
+"""
+This scripts creates a combined DomesticViolence database from
+the negative posts database (not critical posts)
+the positive posts database (critical posts)
+The combined database combine all the posts in a random way and is saved to
+"DomesticViolenceDataBase.csv". each time you will run this script you will
+get a database that is organized differently beacause of the randomness.
+"""
+dfNegative = pd.read_csv("db/db-negative-label.csv")
+dfNegative['Label'] = 0
 
-df = pd.read_csv("db/db-gal-negative.csv")
-df['Label'] = 0
-df.to_csv("db/db-negative-label.csv", index=False)
+dfPositive= pd.read_csv("db/db-positive-label.csv")
+dfPositive['Label'] = 1
 
-df2= pd.read_csv("db/db-positive.csv")
-df2['Label'] = 1
-df2.to_csv("db/db-positive-label.csv", index=False)
 
-frames = [df, df2]
+frames = [dfNegative, dfPositive]
 result = pd.concat(frames, ignore_index=True)
 result = result.to_numpy()
 np.random.shuffle(result)
 result_df =pd.DataFrame(data=result, columns=["Post", "Label"])
-result_df.to_csv("DomecticViolence.csv")
+result_df.to_csv("DomesticViolenceDataBase.csv")
