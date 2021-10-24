@@ -1,0 +1,5 @@
+
+In order to use our final classifier, please run finalClassifier.py.
+Look in the libs.txt to see which packages you will need to install.
+This script run the final classifier that wad described in our paper.
+The script will ask you to type a post as an input, ant it will print its classification as an output- Critical/Not Critical.

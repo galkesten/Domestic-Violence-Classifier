@@ -1,0 +1,42 @@
+In order to run Experiments.py you will need the following packages:
+numpy
+pandas
+sklearn
+
+In order to run finalClassifier.py you will need the following packages:
+numpy
+pandas
+sklearn
+nltk
+
+
+In order to use PreProcessor.py you will also need:
+nltk
+numpy
+pandas
+tensorflow_hub
+
+
+In order to run scripts which create the vector representaions to the domestic violence dataset from scratch(you don't need to this unless you change the dataset, all the vectors are already saved in vectors dir):
+
+numpy
+pandas
+sklearn
+genism
+pytorch
+nltk
+spacy
+sentence_transformers
+tensorflow_hub 
+
+You will also need to download these files:
+ "small English pipeline trained on written web tex" - can be downloaded by the following command: python -m spacy download en_core_web_sm
+
+*infersent- The model name is infersent1 and it needs to be downloaded from here https://github.com/facebookresearch/InferSent#use-our-sentence-encoder .
+The model needs to be saved under encoder directory.
+
+*Glove vectors- 
+GloVe vectors also needs to be downloaded from https://github.com/facebookresearch/InferSent#download-word-vectors
+
+*In order to use createFastTextVectors.py please  download the file cc.en.300.bin.gz
+from https://fasttext.cc/docs/en/crawl-vectors.html and save it under vectors/fastText/cc.en.300.bin.gz. You should find it in Model section- search the English bin model.

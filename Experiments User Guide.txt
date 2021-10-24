@@ -1,0 +1,28 @@
+If you wish to run the Experiments, please run the Experiments.py file.
+The script will ask you which number of Experiment you want to run.
+It expects to get one of these numbers as input:
+1 / 2 / 3 / 0. 
+0 - for running all the experiments.
+For each Experiment, A csv  file with all the results will be created under The Results Directory.
+The name of the file will be in this format - Experiment{numExperiment}-results-{current date}.csv
+Each csv file will be in the following structure:
+*The columns names will RD(Random Forest)/MLP/SVM/NB(Naive base).
+*There will be also a column with the name 'title' that indicates the row's name. 
+*Each row name will mention the preprocessing method and the kind of features that were used.
+*Each cell contains the accuracy score for a triple combination- preprocessing method x featuers type(in the title) x Learning algorithm(in column).
+*If the accuracy score for a cell is -1 it means that this combination was not tested during the experiment.
+
+For Example, 
+We can see in Experiment1-results-Oct-23-2021.csv that the first row is:
+
+Title	                 RD       MLP       SVM			NB
+BagOfWords-min preprocess	0.7525	0.81	0.7275000000000000	0.8
+
+The meaning if this row is: 
+*For the combo of minimal preprocess on documents + using Bag of words model + using Random forest we got accuracy of 0.7525.
+
+For the combo of minimal preprocess on documents + using Bag of words model + using MLP we got accuracy of 0.81.
+
+*For the combo of minimal preprocess on documents + using Bag of words model + using SVM we got accuracy of 0.7275.
+
+*For the combo of minimal preprocess on documents + using Bag of words model + using nb we got accuracy of 0.8.
